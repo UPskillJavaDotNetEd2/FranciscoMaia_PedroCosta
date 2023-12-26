@@ -5,9 +5,10 @@ package org.upskill;
  * um nome, uma morada, um género, uma data de nascimento, um número de clientes angariados, um vencimento base e um preço
  * por cliente angariado.
  */
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa implements Pagamento {
     //variaveis de instancia
     private int numeroClientesAngariados;
+    private final int NUMEROCLENTESANGARIADOS_POR_OMISSAO = 0;
 
     //variaveis de classe
     private static int idCont = 0;
@@ -27,6 +28,10 @@ public class Funcionario extends Pessoa {
     public Funcionario( String nome, String morada, String genero, Data dataNascimento, int numeroClientesAngariados) {
         super("FUNC-"+ ++idCont, nome, morada, genero, dataNascimento);
         this.numeroClientesAngariados = numeroClientesAngariados;
+    }
+    public Funcionario(){
+        super();
+        numeroClientesAngariados= NUMEROCLENTESANGARIADOS_POR_OMISSAO;
     }
 
     /**
