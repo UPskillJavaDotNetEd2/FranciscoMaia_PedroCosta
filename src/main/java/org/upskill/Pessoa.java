@@ -13,6 +13,11 @@ public class Pessoa implements Comparable<Pessoa> {
     private String morada;
     private String genero;
     private Data dataNascimento;
+    private String ID_POR_OMISSAO = "Sem Id";
+    private String NOME_POR_OMISSAO = "Sem nome";
+    private String MORADA_POR_OMISSAO = "Sem morada";
+    private String GENERO_POR_OMISSAO = "Sem genero";
+    private Data DATA_POR_OMISSAO = new Data();
 
     // Construtores
     /**
@@ -37,11 +42,11 @@ public class Pessoa implements Comparable<Pessoa> {
      * Construtor vazio para criar uma instância de Pessoa com valores por omissão.
      */
     public Pessoa() {
-        this.identificador = "";
-        this.nome = "";
-        this.morada = "";
-        this.genero = "";
-        this.dataNascimento = new Data();
+        this.identificador = ID_POR_OMISSAO;
+        this.nome = NOME_POR_OMISSAO;
+        this.morada = MORADA_POR_OMISSAO;
+        this.genero = GENERO_POR_OMISSAO;
+        this.dataNascimento = DATA_POR_OMISSAO;
     }
 
     /**
