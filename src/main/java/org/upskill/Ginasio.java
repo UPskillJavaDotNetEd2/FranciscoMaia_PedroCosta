@@ -244,7 +244,9 @@ public class Ginasio {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ginasio ginasio = (Ginasio) o;
-        return Objects.equals(nome, ginasio.nome) && Objects.equals(morada, ginasio.morada) && Objects.equals(pessoas, ginasio.pessoas) && Objects.equals(NOME_POR_OMISSAO, ginasio.NOME_POR_OMISSAO) && Objects.equals(MORADA_POR_OMISSAO, ginasio.MORADA_POR_OMISSAO);
+        return Objects.equals(nome, ginasio.nome) &&
+                Objects.equals(morada, ginasio.morada) &&
+                Objects.equals(pessoas, ginasio.pessoas);
     }
 
     /**
