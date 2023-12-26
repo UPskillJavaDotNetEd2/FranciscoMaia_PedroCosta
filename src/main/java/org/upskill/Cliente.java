@@ -48,6 +48,9 @@ public abstract class Cliente extends Pessoa {
         this.tipo = tipo;
         this.altura = altura;
         this.peso = peso;
+        this.numeroHoras = NUMERO_HORAS_POR_OMISSAO;
+        this.numeroAulas = NUMERO_AULAS_POR_OMISSAO;
+        this.numeroAulasHidroginastica = NUMERO_AULAS_HIDROGINASTICA_POR_OMISSAO;
     }
     public Cliente(String identificador, String nome, String morada, String genero, Data dataNascimento,
                    TipoCliente tipo, int altura, double peso,int numeroAulas,int numeroAulasHidroginastica,double numeroHoras) {
@@ -67,6 +70,7 @@ public abstract class Cliente extends Pessoa {
         this.peso = peso;
         this.numeroAulas=numeroAulas;
         this.numeroAulasHidroginastica=numeroAulasHidroginastica;
+        this.numeroHoras = NUMERO_HORAS_POR_OMISSAO;
     }
 
     // Construtor padrão utilizando constantes

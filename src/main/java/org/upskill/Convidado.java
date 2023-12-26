@@ -52,6 +52,7 @@ public class Convidado extends Cliente {
      * Construtor vazio que inicializa as variáveis de instância com valores padrão.
      */
     public Convidado(){
+        super();
         horasGratis = HORAS_GRATIS_POR_OMISSAO;
         numeroSessaoComPT = NUMERO_SESSAO_COM_PT_POR_OMISSAO;
         precoSessaoPT = PRECO_SESSAO_PT_POR_OMISSAO;
