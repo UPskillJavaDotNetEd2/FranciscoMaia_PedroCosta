@@ -40,12 +40,26 @@ public class Convidado extends Cliente {
      * @param numeroSessaoComPT        O número de sessões de treinamento pessoal que o convidado teve.
      * @param precoSessaoPT            O preço por sessão de treinamento pessoal para o convidado.
      */
-    public Convidado(String nome, String morada, String genero, Data dataNascimento,  int altura, double peso, int horasGratis, double numeroHoras, int numeroDeAulas, int numeroDeAulasHidroginastica, int numeroSessaoComPT, int precoSessaoPT) {
-        super("CLI-ESPORÁDICO-" + ++idCont, nome, morada, genero, dataNascimento, TipoCliente.CONVIDADO, altura, peso,numeroDeAulas,numeroDeAulasHidroginastica,numeroHoras);
-        this.horasGratis = horasGratis;
-        this.numeroSessaoComPT = numeroSessaoComPT;
-        this.precoSessaoPT = precoSessaoPT;
+    public Convidado(String nome, String morada, String genero, Data dataNascimento, int altura, double peso, int horasGratis, double numeroHoras, int numeroDeAulas, int numeroDeAulasHidroginastica, int numeroSessaoComPT, int precoSessaoPT) {
+        super("CLI-ESPORÁDICO-" + ++idCont, nome, morada, genero, dataNascimento, TipoCliente.CONVIDADO, altura, peso, numeroDeAulas, numeroDeAulasHidroginastica, numeroHoras);
+
+        if (horasGratis < 0) {
+            throw new IllegalArgumentException("O número de horas grátis não pode ser negativo.");
+        }
+
+        if (numeroSessaoComPT < 0) {
+            throw new IllegalArgumentException("O número de sessões com PT não pode ser negativo.");
+        }
+
+        if (precoSessaoPT < 0) {
+            throw new IllegalArgumentException("O preço da sessão PT não pode ser negativo.");
+        }
+
+        setHorasGratis(horasGratis);
+        setNumeroSessaoComPT(numeroSessaoComPT);
+        setPrecoSessaoPT(precoSessaoPT);
     }
+
 
     //construtor vazio
     /**
@@ -148,8 +162,12 @@ public class Convidado extends Cliente {
      * @param horasGratis O novo numero de horas gratis.
      */
     public void setHorasGratis(int horasGratis) {
+        if (horasGratis < 0) {
+            throw new IllegalArgumentException("O número de horas grátis não pode ser negativo.");
+        }
         this.horasGratis = horasGratis;
     }
+
     /**
      * Obtém o número de sessões de treinamento pessoal que o convidado teve.
      *
@@ -165,6 +183,9 @@ public class Convidado extends Cliente {
      * @param numeroSessaoComPT O novo número de sessões de treinamento pessoal a ser definido.
      */
     public void setNumeroSessaoComPT(int numeroSessaoComPT) {
+        if (numeroSessaoComPT < 0) {
+            throw new IllegalArgumentException("O número de sessões com PT não pode ser negativo.");
+        }
         this.numeroSessaoComPT = numeroSessaoComPT;
     }
     /**
@@ -173,6 +194,9 @@ public class Convidado extends Cliente {
      * @param precoSessaoPT O novo preço por sessão de treinamento pessoal a ser definido.
      */
     public void setPrecoSessaoPT(int precoSessaoPT) {
+        if (precoSessaoPT < 0) {
+            throw new IllegalArgumentException("O preço da sessão PT não pode ser negativo.");
+        }
         this.precoSessaoPT = precoSessaoPT;
     }
     /**
