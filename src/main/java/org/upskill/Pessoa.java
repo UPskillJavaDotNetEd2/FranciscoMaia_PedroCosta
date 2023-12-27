@@ -31,11 +31,11 @@ public class Pessoa implements Comparable<Pessoa> {
      */
     // Construtor completo
     public Pessoa(String identificador, String nome, String morada, String genero, Data dataNascimento) {
-        this.identificador = identificador;
-        this.nome = nome;
-        this.morada = morada;
-        this.genero = genero;
-        this.dataNascimento = new Data(dataNascimento);
+        setIdentificador(identificador);
+        setNome(nome);
+        setMorada(morada);
+        setGenero(genero);
+        setDataNascimento(dataNascimento);
     }
 
     /**
@@ -117,6 +117,9 @@ public class Pessoa implements Comparable<Pessoa> {
      * @param identificador Novo identificador da pessoa.
      */
     public void setIdentificador(String identificador) {
+        if (identificador == null || identificador.trim().isEmpty()) {
+            throw new IllegalArgumentException("O identificador não pode ser nulo ou vazio.");
+        }
         this.identificador = identificador;
     }
 
@@ -126,6 +129,9 @@ public class Pessoa implements Comparable<Pessoa> {
      * @param nome Novo nome da pessoa.
      */
     public void setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("O nome não pode ser nulo ou vazio.");
+        }
         this.nome = nome;
     }
 
@@ -135,6 +141,9 @@ public class Pessoa implements Comparable<Pessoa> {
      * @param morada Nova morada da pessoa.
      */
     public void setMorada(String morada) {
+        if (morada == null || morada.trim().isEmpty()) {
+            throw new IllegalArgumentException("A morada não pode ser nula ou vazia.");
+        }
         this.morada = morada;
     }
 
@@ -144,6 +153,9 @@ public class Pessoa implements Comparable<Pessoa> {
      * @param genero Novo género da pessoa.
      */
     public void setGenero(String genero) {
+        if (genero == null || genero.trim().isEmpty()) {
+            throw new IllegalArgumentException("O género não pode ser nulo ou vazio.");
+        }
         this.genero = genero;
     }
 
@@ -153,6 +165,9 @@ public class Pessoa implements Comparable<Pessoa> {
      * @param dataNascimento Nova data de nascimento da pessoa.
      */
     public void setDataNascimento(Data dataNascimento) {
+        if (dataNascimento == null) {
+            throw new IllegalArgumentException("A data de nascimento não pode ser nula.");
+        }
         this.dataNascimento = dataNascimento;
     }
 
