@@ -46,8 +46,8 @@ public abstract class Cliente extends Pessoa {
                    TipoCliente tipo, int altura, double peso) {
         super(identificador, nome, morada, genero, dataNascimento);
         this.tipo = tipo;
-        this.altura = altura;
-        this.peso = peso;
+        setAltura(altura);
+        setPeso(peso);
         this.numeroHoras = NUMERO_HORAS_POR_OMISSAO;
         this.numeroAulas = NUMERO_AULAS_POR_OMISSAO;
         this.numeroAulasHidroginastica = NUMERO_AULAS_HIDROGINASTICA_POR_OMISSAO;
@@ -56,20 +56,20 @@ public abstract class Cliente extends Pessoa {
                    TipoCliente tipo, int altura, double peso,int numeroAulas,int numeroAulasHidroginastica,double numeroHoras) {
         super(identificador, nome, morada, genero, dataNascimento);
         this.tipo = tipo;
-        this.altura = altura;
-        this.peso = peso;
-        this.numeroAulas=numeroAulas;
-        this.numeroAulasHidroginastica=numeroAulasHidroginastica;
-        this.numeroHoras=numeroHoras;
+        setAltura(altura);
+        setPeso(peso);
+        setNumeroAulas(numeroAulas);
+        setNumeroAulasHidroginastica(numeroAulasHidroginastica);
+        setNumeroHoras(numeroHoras);
     }
     public Cliente(String identificador, String nome, String morada, String genero, Data dataNascimento,
                    TipoCliente tipo, int altura, double peso,int numeroAulas,int numeroAulasHidroginastica) {
         super(identificador, nome, morada, genero, dataNascimento);
         this.tipo = tipo;
-        this.altura = altura;
-        this.peso = peso;
-        this.numeroAulas=numeroAulas;
-        this.numeroAulasHidroginastica=numeroAulasHidroginastica;
+        setAltura(altura);
+        setPeso(peso);
+        setNumeroAulas(numeroAulas);
+        setNumeroAulasHidroginastica(numeroAulasHidroginastica);
         this.numeroHoras = NUMERO_HORAS_POR_OMISSAO;
     }
 
@@ -142,6 +142,8 @@ public abstract class Cliente extends Pessoa {
      * @param duracao A nova duração padrão de uma aula.
      */
     public static void setDuracaoAula(double duracao) {
+        if(duracao<=0)
+            throw new IllegalArgumentException("A duracao da aula deve ser maior que 0");
         duracaoAula = duracao;
     }
 
@@ -160,6 +162,8 @@ public abstract class Cliente extends Pessoa {
      * @param numeroHoras O novo número total de horas de atividade do cliente.
      */
     public void setNumeroHoras(double numeroHoras) {
+        if(numeroHoras<=0)
+            throw new IllegalArgumentException("O numero de horas deve ser maior que 0");
         this.numeroHoras = numeroHoras;
     }
 
@@ -169,6 +173,8 @@ public abstract class Cliente extends Pessoa {
      * @param numeroDeAulas O novo número de aulas regulares frequentadas pelo cliente.
      */
     public void setNumeroAulas(int numeroDeAulas) {
+        if(numeroAulas<0)
+            throw new IllegalArgumentException("O numero aulas deve ser maior ou igual a 0");
         this.numeroAulas = numeroDeAulas;
     }
 
@@ -178,6 +184,8 @@ public abstract class Cliente extends Pessoa {
      * @param numeroDeAulasHidroginastica O novo número de aulas de hidroginástica frequentadas pelo cliente.
      */
     public void setNumeroAulasHidroginastica(int numeroDeAulasHidroginastica) {
+        if(numeroAulasHidroginastica < 0)
+            throw new IllegalArgumentException("O numero aulas deve ser maior ou igual a 0");
         this.numeroAulasHidroginastica = numeroDeAulasHidroginastica;
     }
 
@@ -198,6 +206,8 @@ public abstract class Cliente extends Pessoa {
      * @param altura A altura do cliente a ser atribuída em centímetros.
      */
     public void setAltura(int altura) {
+        if(altura<0)
+            throw new IllegalArgumentException("A altura deve ser maior que 0");
         this.altura = altura;
     }
 
@@ -207,6 +217,8 @@ public abstract class Cliente extends Pessoa {
      * @param peso O peso do cliente a ser atribuído em quilogramas.
      */
     public void setPeso(double peso) {
+        if(peso<0)
+            throw new IllegalArgumentException("O peso deve ser maior que 0");
         this.peso = peso;
     }
 
