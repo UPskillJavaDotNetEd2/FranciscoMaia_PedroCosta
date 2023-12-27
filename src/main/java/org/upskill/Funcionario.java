@@ -27,8 +27,12 @@ public class Funcionario extends Pessoa implements Pagamento {
      */
     public Funcionario( String nome, String morada, String genero, Data dataNascimento, int numeroClientesAngariados) {
         super("FUNC-"+ ++idCont, nome, morada, genero, dataNascimento);
+        if (numeroClientesAngariados < 0) {
+            throw new IllegalArgumentException("O número de clientes angariados não pode ser negativo");
+        }
         this.numeroClientesAngariados = numeroClientesAngariados;
     }
+
     public Funcionario(){
         super();
         numeroClientesAngariados= NUMEROCLENTESANGARIADOS_POR_OMISSAO;
