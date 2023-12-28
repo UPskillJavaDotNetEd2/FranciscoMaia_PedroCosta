@@ -28,9 +28,9 @@ public class Treinador extends Pessoa implements Pagamento {
      */
     public Treinador(String nome, String morada, String genero, Data dataNascimento, double precoSessao, double vencimento, int numeroSessaoPT) {
         super("TREI-" + idCont++, nome, morada, genero, dataNascimento);
-        this.precoSessao = precoSessao;
-        this.vencimento = vencimento;
-        this.numeroSessaoPT = numeroSessaoPT;
+        setPrecoSessao(precoSessao);
+        setVencimento(vencimento);
+        setNumeroSessaoPT(numeroSessaoPT);
     }
 
 
@@ -65,6 +65,9 @@ public class Treinador extends Pessoa implements Pagamento {
      * @param precoSessao O novo preço por sessão.
      */
     public void setPrecoSessao(double precoSessao) {
+        if (precoSessao < 0) {
+            throw new IllegalArgumentException("O preço por sessao nao pode ser negativo.");
+        }
         this.precoSessao = precoSessao;
     }
 
@@ -73,6 +76,9 @@ public class Treinador extends Pessoa implements Pagamento {
      * @param vencimento O novo vencimento base.
      */
     public void setVencimento(double vencimento) {
+        if (vencimento < 800) {
+            throw new IllegalArgumentException("O vencimento tem de ser superior ao salario minimo.");
+        }
         this.vencimento = vencimento;
     }
 
@@ -81,6 +87,9 @@ public class Treinador extends Pessoa implements Pagamento {
      * @param numeroSessaoPT O novo número de sessões.
      */
     public void setNumeroSessaoPT(int numeroSessaoPT) {
+        if (numeroSessaoPT < 0) {
+            throw new IllegalArgumentException("O número de sessões de Personal Trainer não pode ser negativo.");
+        }
         this.numeroSessaoPT = numeroSessaoPT;
     }
 
