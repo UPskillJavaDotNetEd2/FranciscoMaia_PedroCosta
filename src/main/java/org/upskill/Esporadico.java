@@ -81,6 +81,9 @@ public class Esporadico extends Cliente {
      * @param precoAula O preço por aula a ser definido.
      */
     public static void setPrecoAula(double precoAula) {
+        if (precoAula <= 0) {
+            throw new IllegalArgumentException("O preço a pagar por aula deve ser superior a 0.");
+        }
         Esporadico.precoAula = precoAula;
     }
 
@@ -89,6 +92,9 @@ public class Esporadico extends Cliente {
      * @param precoHora O preço por hora a ser definido.
      */
     public static void setPrecoHora(double precoHora) {
+        if (precoAulaHidroginastica <= 0) {
+            throw new IllegalArgumentException("O preço a pagar por hora deve ser superior a 0.");
+        }
         Esporadico.precoHora = precoHora;
     }
 
@@ -97,6 +103,9 @@ public class Esporadico extends Cliente {
      * @param precoHoraExtra O preço por hora extra a ser definido.
      */
     public static void setPrecoHoraExtra(double precoHoraExtra) {
+        if (precoAulaHidroginastica <= 0) {
+            throw new IllegalArgumentException("O preço a pagar por hora deve ser superior a 0.");
+        }
         Esporadico.precoHoraExtra = precoHoraExtra;
     }
 

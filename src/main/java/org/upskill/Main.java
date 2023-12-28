@@ -207,6 +207,57 @@ public class Main {
         return new Regular(nome, morada, genero, dataNascimento, altura, peso, mensalidadeFixa, numeroAulasHidroginastica, numeroSessoesPT, precoSessao, numeroAulas);
     }
 
+    private static Convidado criarConvidado(Scanner scanner) {
+        Convidado convidado = null;
+
+        do {
+            try {
+                System.out.println("Digite o nome:");
+                String nome = scanner.nextLine();
+
+                System.out.println("Digite o endereço:");
+                String morada = scanner.nextLine();
+
+                System.out.println("Digite o gênero:");
+                String genero = scanner.nextLine();
+
+                System.out.println("Digite a data de nascimento (AAAA-MM-DD):");
+                String dataNascimentoString = scanner.nextLine();
+                Data dataNascimento = parseData(dataNascimentoString);
+
+                System.out.println("Digite a altura:");
+                int altura = scanner.nextInt();
+
+                System.out.println("Digite o peso:");
+                double peso = scanner.nextDouble();
+
+                System.out.println("Digite o número de horas grátis:");
+                int horasGratis = scanner.nextInt();
+
+                System.out.println("Digite o número de sessões de PT:");
+                int numeroSessoesPT = scanner.nextInt();
+
+                System.out.println("Digite o preço por sessão de PT:");
+                double precoSessaoPT = scanner.nextDouble();
+
+                // Tenta criar o objeto Convidado
+                convidado = new Convidado(nome, morada, genero, dataNascimento, altura, peso, horasGratis, 0, 0, 0, numeroSessoesPT, precoSessaoPT);
+
+                // Se chegou aqui, o objeto foi criado com sucesso, então sai do loop
+                break;
+
+            } catch (IllegalArgumentException e) {
+                // Trate exceções específicas e forneça feedback ao usuário
+                System.out.println("Erro: " + e.getMessage());
+                // Limpe o buffer do scanner para evitar loops infinitos
+                scanner.nextLine();
+            }
+        } while (true);
+
+        return convidado;
+    }
+
+
     // Método auxiliar para analisar a string de data e transformar num objeto Data
     private static Data parseData(String dataString) {
         String[] partes = dataString.split("-");

@@ -134,6 +134,9 @@ public class Convidado extends Cliente {
      * @param precoAula O novo preço por aula regular a ser definido.
      */
     public static void setPrecoAula(double precoAula) {
+        if (precoAulaHidroginastica <= 0) {
+            throw new IllegalArgumentException("O preço a pagar por aula deve ser superior a 0.");
+        }
         Convidado.precoAula = precoAula;
     }
 
@@ -144,6 +147,9 @@ public class Convidado extends Cliente {
      * @param precoAulaHidroginastica O novo preço por aula de hidroginastica a ser definido.
      */
     public static void setPrecoAulaHidroginastica(double precoAulaHidroginastica) {
+        if (precoAulaHidroginastica <= 0) {
+            throw new IllegalArgumentException("O preço a pagar por aula de hidroginastica deve ser superior a 0.");
+        }
         Convidado.precoAulaHidroginastica = precoAulaHidroginastica;
     }
     // Métodos setters
@@ -153,6 +159,9 @@ public class Convidado extends Cliente {
      * @param precoHora O novo preço por hora a ser definido.
      */
     public static void setPrecoHora(double precoHora) {
+        if (precoHora <= 0) {
+            throw new IllegalArgumentException("O preço a pagar por hora deve ser superior a 0.");
+        }
         Convidado.precoHora = precoHora;
     }
     // Métodos setters
