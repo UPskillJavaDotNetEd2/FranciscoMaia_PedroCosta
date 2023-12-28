@@ -35,10 +35,10 @@ public class Regular extends Cliente {
      */
     public Regular(String nome, String morada, String genero, Data dataNascimento, int altura, double peso, double mensalidade, int numeroAulasHidroginastica, int numeroSessoesPT, double precoSessao,int numeroAulas) {
         super("CLI-REGULAR-" + ++idCont, nome, morada, genero, dataNascimento, TipoCliente.REGULAR, altura, peso,numeroAulas,numeroAulasHidroginastica);
-        this.mensalidadeFixa = mensalidade;
+        setMensalidadeFixa(mensalidade);
         this.ativo = true;
-        this.precoSessao = precoSessao;
-        this.numeroSessoesPT = numeroSessoesPT;
+        setPrecoSessao(precoSessao);
+        setNumeroSessoesPT(numeroSessoesPT);
     }
 
     // Métodos de acesso
@@ -104,6 +104,9 @@ public class Regular extends Cliente {
      * @param mensalidadeFixa Nova mensalidade fixa do cliente Regular.
      */
     public void setMensalidadeFixa(double mensalidadeFixa) {
+        if (mensalidadeFixa < 0) {
+            throw new IllegalArgumentException("A mensalidade fixa não pode ser negativa.");
+        }
         this.mensalidadeFixa = mensalidadeFixa;
     }
 
@@ -132,6 +135,9 @@ public class Regular extends Cliente {
      * @param numeroSessoesPT Novo número de sessões de Personal Trainer do cliente Regular.
      */
     public void setNumeroSessoesPT(int numeroSessoesPT) {
+        if (numeroSessoesPT < 0) {
+            throw new IllegalArgumentException("O número de sessões de Personal Trainer não pode ser negativo.");
+        }
         this.numeroSessoesPT = numeroSessoesPT;
     }
 
@@ -141,6 +147,9 @@ public class Regular extends Cliente {
      * @param precoSessao Novo preço por sessão de Personal Trainer do cliente Regular.
      */
     public void setPrecoSessao(double precoSessao) {
+        if (precoSessao < 0) {
+            throw new IllegalArgumentException("O preço por sessão não pode ser negativo.");
+        }
         this.precoSessao = precoSessao;
     }
 
