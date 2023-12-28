@@ -164,6 +164,11 @@ public class Main {
         Regular regularInput = criarClienteRegular(scanner);
 
         System.out.println("Objeto Regular Criado:\n" + regularInput);
+        System.out.println();
+
+        Convidado convidadoTest = criarConvidado(scanner);
+        System.out.println("Objeto Convidado Criado:\n" + regularInput);
+
 
     }
 
@@ -212,6 +217,7 @@ public class Main {
 
         do {
             try {
+                scanner.nextLine();
                 System.out.println("Digite o nome:");
                 String nome = scanner.nextLine();
 
@@ -234,6 +240,15 @@ public class Main {
                 System.out.println("Digite o número de horas grátis:");
                 int horasGratis = scanner.nextInt();
 
+                System.out.println("Digite o numero de horas:");
+                double numeroHoras = scanner.nextDouble();
+
+                System.out.println("Digite o número de aulas:");
+                int numeroAulas = scanner.nextInt();
+
+                System.out.println("Digite o número de aulas de hidroginástica:");
+                int numeroAulasHidroginastica = scanner.nextInt();
+
                 System.out.println("Digite o número de sessões de PT:");
                 int numeroSessoesPT = scanner.nextInt();
 
@@ -241,7 +256,7 @@ public class Main {
                 double precoSessaoPT = scanner.nextDouble();
 
                 // Tenta criar o objeto Convidado
-                convidado = new Convidado(nome, morada, genero, dataNascimento, altura, peso, horasGratis, 0, 0, 0, numeroSessoesPT, precoSessaoPT);
+                convidado = new Convidado(nome, morada, genero, dataNascimento, altura, peso, horasGratis, numeroHoras, numeroAulas, numeroAulasHidroginastica, numeroSessoesPT,precoSessaoPT);
 
                 // Se chegou aqui, o objeto foi criado com sucesso, então sai do loop
                 break;

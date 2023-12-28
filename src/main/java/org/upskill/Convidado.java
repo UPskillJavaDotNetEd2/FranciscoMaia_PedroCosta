@@ -40,7 +40,7 @@ public class Convidado extends Cliente {
      * @param numeroSessaoComPT        O número de sessões de treinamento pessoal que o convidado teve.
      * @param precoSessaoPT            O preço por sessão de treinamento pessoal para o convidado.
      */
-    public Convidado(String nome, String morada, String genero, Data dataNascimento, int altura, double peso, int horasGratis, double numeroHoras, int numeroDeAulas, int numeroDeAulasHidroginastica, int numeroSessaoComPT, int precoSessaoPT) {
+    public Convidado(String nome, String morada, String genero, Data dataNascimento, int altura, double peso, int horasGratis, double numeroHoras, int numeroDeAulas, int numeroDeAulasHidroginastica, int numeroSessaoComPT, double precoSessaoPT) {
         super("CLI-ESPORÁDICO-" + ++idCont, nome, morada, genero, dataNascimento, TipoCliente.CONVIDADO, altura, peso, numeroDeAulas, numeroDeAulasHidroginastica, numeroHoras);
 
         if (horasGratis < 0) {
@@ -202,7 +202,7 @@ public class Convidado extends Cliente {
      *
      * @param precoSessaoPT O novo preço por sessão de treinamento pessoal a ser definido.
      */
-    public void setPrecoSessaoPT(int precoSessaoPT) {
+    public void setPrecoSessaoPT(double precoSessaoPT) {
         if (precoSessaoPT < 0) {
             throw new IllegalArgumentException("O preço da sessão PT não pode ser negativo.");
         }
