@@ -1,13 +1,15 @@
 package org.upskill;
 
 
+import java.util.Scanner;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Regular regular1 = new Regular("Pedro", "Amarante", "Masculino", new Data(1995, 6, 11), 201, 80, 80, 7, 8, 20,12);
-        Regular regular2 = new Regular("Miguel", "Amarante2", "Masculino", new Data(1999, 3, 12), 200, 80, 80, 35, 11, 20,7);
-        Regular regular3 = new Regular("Costa", "Amarante3", "Masculino", new Data(1991, 4, 5), 200, 80, 50, 16, 9, 20,15);
+        Regular regular1 = new Regular("Pedro", "Amarante", "Masculino", new Data(1995, 6, 11), 201, 80, 80, 7, 8, 20, 12);
+        Regular regular2 = new Regular("Miguel", "Amarante2", "Masculino", new Data(1999, 3, 12), 200, 80, 80, 35, 11, 20, 7);
+        Regular regular3 = new Regular("Costa", "Amarante3", "Masculino", new Data(1991, 4, 5), 200, 80, 50, 16, 9, 20, 15);
         regular3.setAtivo(false);
 
         Esporadico esporadico1 = new Esporadico("Cristiano Ronaldo", "Morada 3", "Masculino", new Data(1998, 3, 15), 175, 75, 3, 12, 20);
@@ -27,7 +29,7 @@ public class Main {
         Funcionario funcionario3 = new Funcionario("Marta Oliveira", "Bairro Z", "Feminino", new Data(2000, 9, 20), 20);
 
         //▪ criação de uma instância da classe Ginásio;
-        Ginasio g1 = new Ginasio("Gym","Amarante");
+        Ginasio g1 = new Ginasio("Gym", "Amarante");
 
         //Adiciona clientes,funcionarios e treinadores ao ginasio
         g1.adicionarPessoa(regular1);
@@ -58,38 +60,40 @@ public class Main {
 
         //▪ apresentação da quantidade de instâncias de clientes criados, sem percorrer o contentor;
         System.out.println("-----Numero Total de Clientes inscritos no ginasio");
-        System.out.println("Clientes Inscritos no ginasio: "+ (Regular.getIdCont()+Esporadico.getIdCont()+Convidado.getIdCont()));
+        System.out.println("Clientes Inscritos no ginasio: " + (Regular.getIdCont() + Esporadico.getIdCont() + Convidado.getIdCont()));
         System.out.println();
 
         //▪ calcular e apresentar o valor a pagar por cada tipo de cliente, percorrendo apenas uma vez o
         //contentor. Deve ser também calculado e apresentado o valor total a pagar por todos os
         //clientes;
         System.out.println("-----Calcular mensalidade para cada tipo de cliente");
-        double mensalidaTotalConvidados=0;
-        double mensalidaTotalEsporadicos=0;
-        double mensalidaTotalRegulares=0;
-        for (Pessoa c: g1.getPessoas()) {
-            if(c instanceof Convidado){
-                mensalidaTotalConvidados+=((Convidado) c).calculoMensalidade();
-            } if(c instanceof Esporadico){
-                mensalidaTotalEsporadicos+=((Esporadico) c).calculoMensalidade();
-            } if(c instanceof Regular){
-                mensalidaTotalRegulares+=((Regular) c).calculoMensalidade();
+        double mensalidaTotalConvidados = 0;
+        double mensalidaTotalEsporadicos = 0;
+        double mensalidaTotalRegulares = 0;
+        for (Pessoa c : g1.getPessoas()) {
+            if (c instanceof Convidado) {
+                mensalidaTotalConvidados += ((Convidado) c).calculoMensalidade();
+            }
+            if (c instanceof Esporadico) {
+                mensalidaTotalEsporadicos += ((Esporadico) c).calculoMensalidade();
+            }
+            if (c instanceof Regular) {
+                mensalidaTotalRegulares += ((Regular) c).calculoMensalidade();
             }
         }
-        System.out.format("Mensalidade total dos clientes Convidados: %.2f€\n",mensalidaTotalConvidados);
-        System.out.format("Mensalidade total dos clientes Esporadicos: %.2f€\n",mensalidaTotalEsporadicos);
-        System.out.format("Mensalidade total dos clientes Regulares: %.2f€\n",mensalidaTotalRegulares);
-        System.out.format("Mensalidade total de todos os clientes: %.2f€\n",mensalidaTotalRegulares+mensalidaTotalConvidados+mensalidaTotalEsporadicos);
+        System.out.format("Mensalidade total dos clientes Convidados: %.2f€\n", mensalidaTotalConvidados);
+        System.out.format("Mensalidade total dos clientes Esporadicos: %.2f€\n", mensalidaTotalEsporadicos);
+        System.out.format("Mensalidade total dos clientes Regulares: %.2f€\n", mensalidaTotalRegulares);
+        System.out.format("Mensalidade total de todos os clientes: %.2f€\n", mensalidaTotalRegulares + mensalidaTotalConvidados + mensalidaTotalEsporadicos);
         System.out.println();
 
         //▪ calcular e apresentar o saldo obtido pelo ginásio nesse mês mediante as receitas dos clientes
         //e custos com os seus Funcionários e Treinadores;
         System.out.println("-----Lucro do ginásio");
-        System.out.println("Ganhos com os clientes: "+g1.calcularGanhosClientes()+"€");
-        System.out.println("Custos com os funcionarios: "+g1.calcularCustosFuncionarios()+"€");
-        System.out.println("Custos com os treinadores: "+g1.calcularCustosTreinadores()+"€");
-        System.out.println("Balanço do mês:"+(g1.calcularGanhosClientes()-g1.calcularCustosFuncionarios()-g1.calcularCustosTreinadores())+"€");
+        System.out.println("Ganhos com os clientes: " + g1.calcularGanhosClientes() + "€");
+        System.out.println("Custos com os funcionarios: " + g1.calcularCustosFuncionarios() + "€");
+        System.out.println("Custos com os treinadores: " + g1.calcularCustosTreinadores() + "€");
+        System.out.println("Balanço do mês:" + (g1.calcularGanhosClientes() - g1.calcularCustosFuncionarios() - g1.calcularCustosTreinadores()) + "€");
         System.out.println();
 
         //▪ calcular e apresentar, para cada género, a média do seu IMC;
@@ -98,7 +102,7 @@ public class Main {
         double mediaImcMasculino = 0;
         int contadorFeminino = 0;
         int contadorMasculino = 0;
-        for (Pessoa c: g1.getPessoas()) {
+        for (Pessoa c : g1.getPessoas()) {
             if (c instanceof Cliente && c.getGenero().equalsIgnoreCase("Feminino")) {
                 mediaImcFeminino += ((Cliente) c).calcularIMC();
                 contadorFeminino++;
@@ -111,7 +115,6 @@ public class Main {
         System.out.printf("Masculino: %.1f%n", mediaImcMasculino / contadorMasculino);
 
 
-
         //▪ Retornar o nome do ginásio;
         System.out.println();
         System.out.println("-----Nome ginásio");
@@ -121,7 +124,7 @@ public class Main {
         //▪ Retornar o valor dos vencimento de cada Funcionário;
         System.out.println("-----Vencimento de cada funcionário: ");
         for (Pessoa p : g1.getPessoas()) {
-            if(p instanceof Funcionario){
+            if (p instanceof Funcionario) {
                 System.out.printf("%s %.2f€%n", p.getNome(), ((Funcionario) p).calcularVencimento());
             }
         }
@@ -129,7 +132,7 @@ public class Main {
         //▪ Retornar o valor dos vencimento de cada Treinador;
         System.out.println("-----Vencimento de cada Treinador");
         for (Pessoa p : g1.getPessoas()) {
-            if(p instanceof Treinador){
+            if (p instanceof Treinador) {
                 System.out.printf("%s %.2f€%n", p.getNome(), ((Treinador) p).calcularVencimento());
             }
         }
@@ -153,5 +156,63 @@ public class Main {
         //frequentaram, os clientes deverão ser apresentados, por ordem alfabética dos seus nomes.
         System.out.println("-----Lista de clientes por ordem crescente do IMC");
         g1.listarPorImc();
+
+        //Criar o objeto scanner para ler as entradas do utilizador
+        Scanner scanner = new Scanner(System.in);
+
+        //Chamar o método de criação de clientes regulares
+        Regular regularInput = criarClienteRegular(scanner);
+
+        System.out.println("Objeto Regular Criado:\n" + regularInput);
+
+    }
+
+    // Método para criar um cliente Regular com entradas do utilizador
+    private static Regular criarClienteRegular(Scanner scanner) {
+        System.out.println("Digite o nome:");
+        String nome = scanner.nextLine();
+
+        System.out.println("Digite o endereço:");
+        String morada = scanner.nextLine();
+
+        System.out.println("Digite o gênero:");
+        String genero = scanner.nextLine();
+
+        System.out.println("Digite a data de nascimento (AAAA-MM-DD):");
+        String dataNascimentoString = scanner.nextLine();
+        Data dataNascimento = parseData(dataNascimentoString);
+
+        System.out.println("Digite a altura:");
+        int altura = scanner.nextInt();
+
+        System.out.println("Digite o peso:");
+        double peso = scanner.nextDouble();
+
+        System.out.println("Digite a mensalidade fixa:");
+        double mensalidadeFixa = scanner.nextDouble();
+
+        System.out.println("Digite o número de aulas de hidroginástica:");
+        int numeroAulasHidroginastica = scanner.nextInt();
+
+        System.out.println("Digite o número de sessões de PT:");
+        int numeroSessoesPT = scanner.nextInt();
+
+        System.out.println("Digite o preço por sessão de PT:");
+        double precoSessao = scanner.nextDouble();
+
+        System.out.println("Digite o número de aulas regulares:");
+        int numeroAulas = scanner.nextInt();
+
+        // Crie e retorne o objeto Regular com as entradas do usuário
+        return new Regular(nome, morada, genero, dataNascimento, altura, peso, mensalidadeFixa, numeroAulasHidroginastica, numeroSessoesPT, precoSessao, numeroAulas);
+    }
+
+    // Método auxiliar para analisar a string de data e transformar num objeto Data
+    private static Data parseData(String dataString) {
+        String[] partes = dataString.split("-");
+        int ano = Integer.parseInt(partes[0]);
+        int mes = Integer.parseInt(partes[1]);
+        int dia = Integer.parseInt(partes[2]);
+        return new Data(ano, mes, dia);
     }
 }
