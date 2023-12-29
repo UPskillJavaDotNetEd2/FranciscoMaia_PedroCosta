@@ -1,6 +1,7 @@
 package org.upskill;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -167,7 +168,10 @@ public class Main {
         System.out.println();
 
         Convidado convidadoTest = criarConvidado(scanner);
-        System.out.println("Objeto Convidado Criado:\n" + regularInput);
+        System.out.println("Objeto Convidado Criado:\n" + convidadoTest);
+
+        Esporadico esporadicoInput = criarEsporadicoComEntradasDoUtilizador();
+        System.out.println("Objeto Convidado Criado:\n" + esporadicoInput);
 
 
     }
@@ -210,6 +214,59 @@ public class Main {
 
         // Crie e retorne o objeto Regular com as entradas do usuário
         return new Regular(nome, morada, genero, dataNascimento, altura, peso, mensalidadeFixa, numeroAulasHidroginastica, numeroSessoesPT, precoSessao, numeroAulas);
+    }
+
+    private static Esporadico criarEsporadicoComEntradasDoUtilizador() {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            // Obter as entradas do utilizador para o objeto Esporadico
+            System.out.print("Digite o nome: ");
+            String nome = scanner.nextLine();
+
+            System.out.print("Digite a morada: ");
+            String morada = scanner.nextLine();
+
+            System.out.print("Digite o género: ");
+            String genero = scanner.nextLine();
+
+            System.out.print("Digite a data de nascimento (AAAA-MM-DD): ");
+            String dataNascimentoInput = scanner.nextLine();
+            Data dataNascimento = parseData(dataNascimentoInput);
+
+            System.out.print("Digite a altura: ");
+            int altura = scanner.nextInt();
+
+            System.out.print("Digite o peso: ");
+            double peso = scanner.nextDouble();
+
+            System.out.print("Digite o número de aulas regulares: ");
+            int numAulasRegulares = scanner.nextInt();
+
+            System.out.print("Digite o número de aulas de hidroginástica: ");
+            int numAulasHidroginastica = scanner.nextInt();
+
+            System.out.print("Digite o número de horas: ");
+            double numHoras = scanner.nextDouble();
+
+            // Validar as entradas
+            if (altura <= 0 || peso <= 0 || numAulasRegulares < 0 || numAulasHidroginastica < 0 || numHoras < 0) {
+                throw new IllegalArgumentException("As entradas devem ser valores positivos.");
+            }
+
+            // Criar o objeto Esporadico com as entradas do usuário
+            return new Esporadico(nome, morada, genero, dataNascimento, altura, peso, numAulasRegulares, numAulasHidroginastica, numHoras);
+        } catch (InputMismatchException e) {
+            System.out.println("Erro: Entrada inválida. Certifique-se de fornecer o tipo de dados correto.");
+            scanner.nextLine(); // Limpar o buffer do scanner
+            return null;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return null;
+        } finally {
+            // Fechar o scanner no bloco finally
+            scanner.close();
+        }
     }
 
     private static Convidado criarConvidado(Scanner scanner) {
