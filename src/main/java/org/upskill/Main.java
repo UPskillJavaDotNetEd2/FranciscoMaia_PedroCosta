@@ -158,6 +158,7 @@ public class Main {
         System.out.println("-----Lista de clientes por ordem crescente do IMC");
         g1.listarPorImc();
 
+        
         //Criar o objeto scanner para ler as entradas do utilizador
         Scanner scanner = new Scanner(System.in);
         Treinador treinador = criarTreinador(scanner);
@@ -174,6 +175,10 @@ public class Main {
 
         Esporadico esporadicoInput = criarEsporadicoComEntradasDoUtilizador();
         System.out.println("Objeto Convidado Criado:\n" + esporadicoInput);
+
+        Funcionario funcionarioInput = criarFuncionario();
+        System.out.println("Objeto Convidado Criado:\n" + funcionarioInput);
+
 
 
     }
@@ -377,6 +382,33 @@ public class Main {
         } while (true);
 
         return treinador;
+    }
+
+    public static Funcionario criarFuncionario() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Introduza o nome do funcionário:");
+        String nome = scanner.nextLine();
+
+        System.out.println("Introduza a morada do funcionário:");
+        String morada = scanner.nextLine();
+
+        System.out.println("Introduza o género do funcionário:");
+        String genero = scanner.nextLine();
+
+        System.out.println("Digite a data de nascimento do funcionário (AAAA-MM-DD):");
+        String dataNascimentoString = scanner.nextLine();
+        Data dataNascimento = parseData(dataNascimentoString);
+
+        System.out.println("Digite o número de clientes angariados pelo funcionário:");
+        int numeroClientesAngariados = scanner.nextInt();
+
+        try {
+            return new Funcionario(nome, morada, genero, dataNascimento, numeroClientesAngariados);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro ao criar o funcionário: " + e.getMessage());
+            return null;
+        }
     }
 
 
