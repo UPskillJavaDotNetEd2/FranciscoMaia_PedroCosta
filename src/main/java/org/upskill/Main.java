@@ -160,6 +160,8 @@ public class Main {
 
         //Criar o objeto scanner para ler as entradas do utilizador
         Scanner scanner = new Scanner(System.in);
+        Treinador treinador = criarTreinador(scanner);
+        System.out.println("Treinador criado: "+treinador);
 
         //Chamar o método de criação de clientes regulares
         Regular regularInput = criarClienteRegular(scanner);
@@ -212,6 +214,7 @@ public class Main {
         System.out.println("Digite o número de aulas regulares:");
         int numeroAulas = scanner.nextInt();
 
+        scanner.nextLine();
         // Crie e retorne o objeto Regular com as entradas do usuário
         return new Regular(nome, morada, genero, dataNascimento, altura, peso, mensalidadeFixa, numeroAulasHidroginastica, numeroSessoesPT, precoSessao, numeroAulas);
     }
@@ -249,6 +252,7 @@ public class Main {
             System.out.print("Digite o número de horas: ");
             double numHoras = scanner.nextDouble();
 
+            scanner.nextLine();
             // Validar as entradas
             if (altura <= 0 || peso <= 0 || numAulasRegulares < 0 || numAulasHidroginastica < 0 || numHoras < 0) {
                 throw new IllegalArgumentException("As entradas devem ser valores positivos.");
@@ -274,7 +278,7 @@ public class Main {
 
         do {
             try {
-                scanner.nextLine();
+
                 System.out.println("Digite o nome:");
                 String nome = scanner.nextLine();
 
@@ -312,6 +316,7 @@ public class Main {
                 System.out.println("Digite o preço por sessão de PT:");
                 double precoSessaoPT = scanner.nextDouble();
 
+                scanner.nextLine();
                 // Tenta criar o objeto Convidado
                 convidado = new Convidado(nome, morada, genero, dataNascimento, altura, peso, horasGratis, numeroHoras, numeroAulas, numeroAulasHidroginastica, numeroSessoesPT,precoSessaoPT);
 
@@ -327,6 +332,51 @@ public class Main {
         } while (true);
 
         return convidado;
+    }
+    private static Treinador criarTreinador(Scanner scanner) {
+        Treinador treinador = null;
+
+        do {
+            try {
+                System.out.println("Digite o nome:");
+                String nome = scanner.nextLine();
+
+                System.out.println("Digite o endereço:");
+                String morada = scanner.nextLine();
+
+                System.out.println("Digite o gênero:");
+                String genero = scanner.nextLine();
+
+                System.out.println("Digite a data de nascimento (AAAA-MM-DD):");
+                String dataNascimentoString = scanner.nextLine();
+                Data dataNascimento = parseData(dataNascimentoString);
+
+                System.out.println("Digite o preço por sessão de PT:");
+                double precoSessao = scanner.nextDouble();
+
+                System.out.println("Digite o vencimento:");
+                double vencimento = scanner.nextDouble();
+
+                System.out.println("Digite o número de sessões de PT:");
+                int numeroSessaoPT = scanner.nextInt();
+
+                scanner.nextLine();
+
+                // Tenta criar o objeto Treinador
+                treinador = new Treinador(nome, morada, genero, dataNascimento, precoSessao, vencimento, numeroSessaoPT);
+
+                // Se chegou aqui, o objeto foi criado com sucesso, então sai do loop
+                break;
+
+            } catch (IllegalArgumentException e) {
+                // Trate exceções específicas e forneça feedback ao usuário
+                System.out.println("Erro: " + e.getMessage());
+                // Limpe o buffer do scanner para evitar loops infinitos
+                scanner.nextLine();
+            }
+        } while (true);
+
+        return treinador;
     }
 
 
