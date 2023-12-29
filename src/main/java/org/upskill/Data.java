@@ -137,9 +137,7 @@ public class Data implements Comparable<Data> {
      * @param dia o dia da data.
      */
     public Data(int ano, int mes, int dia) {
-        this.ano = ano;
-        this.mes = Mes.obterMes(mes);
-        this.dia = dia;
+        setData(ano,mes,dia);
     }
 
     /**
@@ -198,6 +196,9 @@ public class Data implements Comparable<Data> {
      * @param dia o novo dia da data.
      */
     public final void setData(int ano, int mes, int dia) {
+        if (ano < 0 || mes < 1 || mes > 12 || dia < 1 || dia > Mes.obterMes(mes).numeroDeDias(ano)) {
+            throw new IllegalArgumentException("Data invalida");
+        }
         this.ano = ano;
         this.mes = Mes.obterMes(mes);
         this.dia = dia;
