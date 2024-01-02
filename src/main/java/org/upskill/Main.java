@@ -158,26 +158,57 @@ public class Main {
         System.out.println("-----Lista de clientes por ordem crescente do IMC");
         g1.listarPorImc();
 
-        
+
         //Criar o objeto scanner para ler as entradas do utilizador
         Scanner scanner = new Scanner(System.in);
-        Treinador treinador = criarTreinador(scanner);
-        System.out.println("Treinador criado: "+treinador);
+        Treinador treinadorInput1 = criarTreinador(scanner);
+        System.out.println("Treinador criado: "+ treinadorInput1);
+
+
+        Treinador treinadorInput2 = criarTreinador(scanner);
+        System.out.println("Treinador criado: "+ treinadorInput2);
+
+        Treinador treinadorInput3 = criarTreinador(scanner);
+        System.out.println("Treinador criado: "+ treinadorInput3);
 
         //Chamar o método de criação de clientes regulares
         Regular regularInput = criarClienteRegular(scanner);
-
         System.out.println("Objeto Regular Criado:\n" + regularInput);
+
+        Regular regularInput2 = criarClienteRegular(scanner);
+        System.out.println("Objeto Regular Criado:\n" + regularInput2);
+
+        Regular regularInput3 = criarClienteRegular(scanner);
+        System.out.println("Objeto Regular Criado:\n" + regularInput3);
+
         System.out.println();
 
         Convidado convidadoTest = criarConvidado(scanner);
         System.out.println("Objeto Convidado Criado:\n" + convidadoTest);
 
+        Convidado convidadoTest2 = criarConvidado(scanner);
+        System.out.println("Objeto Convidado Criado:\n" + convidadoTest2);
+
+        Convidado convidadoTest3 = criarConvidado(scanner);
+        System.out.println("Objeto Convidado Criado:\n" + convidadoTest3);
+
         Esporadico esporadicoInput = criarEsporadicoComEntradasDoUtilizador();
         System.out.println("Objeto Convidado Criado:\n" + esporadicoInput);
 
+        Esporadico esporadicoInput2 = criarEsporadicoComEntradasDoUtilizador();
+        System.out.println("Objeto Convidado Criado:\n" + esporadicoInput2);
+
+        Esporadico esporadicoInput3 = criarEsporadicoComEntradasDoUtilizador();
+        System.out.println("Objeto Convidado Criado:\n" + esporadicoInput3);
+
         Funcionario funcionarioInput = criarFuncionario();
         System.out.println("Objeto Convidado Criado:\n" + funcionarioInput);
+
+        Funcionario funcionarioInput2 = criarFuncionario();
+        System.out.println("Objeto Convidado Criado:\n" + funcionarioInput2);
+
+        Funcionario funcionarioInput3 = criarFuncionario();
+        System.out.println("Objeto Convidado Criado:\n" + funcionarioInput3);
 
 
 
