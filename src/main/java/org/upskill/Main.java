@@ -173,6 +173,8 @@ public class Main {
 
         //Chamar o método de criação de clientes regulares
         Regular regularInput = criarClienteRegular(scanner);
+
+        //Teste se o objeto foi criado
         System.out.println("Objeto Regular Criado:\n" + regularInput);
 
         Regular regularInput2 = criarClienteRegular(scanner);
